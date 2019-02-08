@@ -97,3 +97,53 @@ User.deleteAccount = function() {
       }
     }
   };
+
+
+User.isAvailable = function(title) {
+    if (this.libBooks.hasOwnProperty(title) && this.libBooks.title.numOfCopies > 0)
+      console.log(`\nThere are ${this.libBooks.title.numOfCopies} copies of \"${title}\" available` +
+      `\nYou can find in one of our division at ${this.libBooks.title.location} street.`);
+      else
+        console.log(`\nSearching failed. There is no copy of \"${title}\" available right now.`);
+    };
+
+
+User.borrow = function (title){
+  // get input in format rrrr/mm/dd
+  let rentDate = prompt('Enter current date in format rrrr\/mm\/dd', 'rrrr\/mm\/dd');
+
+  if (isRegistered(this.userID) && this.userAccounts[this.userID].saldo >= 0 && this.userAccounts[this.userID].borrowedBook.length < 7 && this.libBooks.title.numOfCopies > 0) {
+    // userAccounts[this.userID].borrowedBook.push({title : {start: new Date(rentDate)}});   //
+     this.userAccounts[this.userID].borrowedBook.title = {};
+     this.userAccounts[this.userID].borrowedBook.title.start = new Date(rentDate);
+     this.libBooks.title.numOfCopies--;
+   }
+};
+
+User.viewTitles = function () {
+  let viewOption = prompt('\nTo check only titles, enter 1' +
+'\nTo check titles and numbers of copies available, enter 2' +
+'\nTo check all information about books in our library, enter 3', 'Here enter number');
+
+  switch (viewOption) {
+    case 1:
+      console.log(Object.keys(this.libBooks));
+      break;
+    case 2:
+      for (let i = 1; i < Object.keys(this.libBooks).length; i++)
+        console.log(`\nTitle: ${Object.keys[i]} number of copies: ${this.libBooks[i].numOfCopies}` );
+      break;
+    case 3:
+      for (let i = 1; i < Object.keys(this.libBooks).length; i++)
+        console.log(this.libBooks[i]);
+      break;
+  }
+};
+
+User.addReservation = function(title) {
+  if (this.userAccounts[this.userID].isActive && this.libBooks.title.reservations.length < 7){
+    this.libBooks.title.reservations.push(this.userID);
+
+  }
+
+};
