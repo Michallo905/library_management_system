@@ -119,3 +119,44 @@ def main():
 
 
 main()
+
+
+class Tytul:
+    def __init__(self, tytul, autor, wydawnictwo, ISBN, liczba_egzemplarzy, miejsce_przechowywania):
+        self.tytul = tytul
+        self.autor = autor
+        self.wydawnictwo = wydawnictwo
+        self.ISBN = ISBN
+        self.liczba_egzemplarzy = liczba_egzemplarzy
+        self.miejsce_przechowywania = miejsce_przechowywania
+
+class Egzemplarz(Tytul):
+   def _init_(self, id_egzemplarza, czas_wypożyczenia, zarezerwowany):
+      self.id_egzemplarza = id_egzemplarza
+      self.czas_wypożyczenia = czas_wypożyczenia
+      self.zarezerwowany = zarezerwowany
+
+class Autor:
+    def __init__(self, imie, nazwisko):
+        self.imie = imie
+        self.nazwisko = nazwisko
+
+class Osoba:
+   def __init__(self, imie, nazwisko, PESEL, adres, login, haslo):
+        self.imie = imie
+        self.nazwisko = nazwisko
+        self.PESEL = PESEL
+        self.adres = adres
+        self.login = login
+        self.haslo = haslo
+
+class Klient(Osoba):
+   def __init__(self, id_klienta):
+        self.id_klienta = id_klienta
+
+class Konto(Klient):
+   def __init__(self, id_konta, libcza_rezerwacji, saldo, aktywne):
+        self.id_konta = id_konta
+        self.libcza_rezerwacji = libcza_rezerwacji
+        self.saldo = saldo
+        self.aktywne = aktywne
