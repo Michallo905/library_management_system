@@ -212,3 +212,19 @@ Library.editTitle = function (title) {
      }
   }
 };
+
+
+LibraryMan.deleteCopy = function(title) {
+  let n = prompt('How many copies do you want to remove?', 'Number of copies')
+  if (this.libBooks.hasOwnProperty(title) && this.libBooks.title.numOfCopies > 0 && this.libBooks.title.numOfCopies > n){
+      this.libBooks.title.numOfCopies -= n;
+   }
+   else
+     console.log('Operation failed');
+ };
+
+LibraryMan.addCopy = function(title) {
+  let m = prompt('How many copies do you want to add?','number of')
+  if (this.libBooks.hasOwnProperty(title))
+       this.libBooks.title.numOfCopies += m;
+  };
