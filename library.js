@@ -140,21 +140,19 @@ User.viewTitles = function () {
   }
 };
 
+
 User.addReservation = function(title) {
-  if (this.userAccounts[this.userID].isActive && this.libBooks.title.reservations.length < 7){
+  if (this.userAccounts[this.userID].isActive & this.libBooks.title.reservations.length < 7){
     this.libBooks.title.reservations.push(this.userID);
-
   }
-
 };
 
 
-
-User.deleteReservation = function(title) {   // co to jest clientID
-  if (isRegistered(this.userId) && this.libBooks.hasOwnProperty(title) && this.libBooks.title.reservations.length < 7){
+User.deleteReservation = function(title, userId) {  
+  if (this.isRegistered(userId) & this.libBooks.hasOwnProperty(title) & this.libBooks.title.reservations.length < 7){
 
     for (let i = 0; i < this.libBooks.title.reservations.length; i++) {
-      if (this.libBooks.title.reservations[i] === this.userId) {
+      if (this.libBooks.title.reservations[i] === userId) {
         this.libBooks.title.reservations.splice(i);
         break;
       }
