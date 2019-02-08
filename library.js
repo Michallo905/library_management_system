@@ -147,3 +147,68 @@ User.addReservation = function(title) {
   }
 
 };
+
+
+
+User.deleteReservation = function(title) {   // co to jest clientID
+  if (isRegistered(this.userId) && this.libBooks.hasOwnProperty(title) && this.libBooks.title.reservations.length < 7){
+
+    for (let i = 0; i < this.libBooks.title.reservations.length; i++) {
+      if (this.libBooks.title.reservations[i] === this.userId) {
+        this.libBooks.title.reservations.splice(i);
+        break;
+      }
+    }
+  }
+};
+
+
+var LibraryMan = Object.create(User);
+
+LibraryMan.init = function (id) {
+  this.id = id;
+};
+
+LibraryMan.addTitle = function (title, author, publisher, ISBN, numOfCopies, location) {
+  if (!(this.libBooks.hasOwnProperty(title))) {
+    this.libBooks.title = {};
+    this.libBooks.title.author = author;
+    this.libBooks.title.publisher = publisher;
+    this.libBooks.title.ISBN = ISBN;
+    this.libBooks.title.numOfCopies = numOfCopies;
+    this.libBooks.title.location = location;
+    this.libBooks.title.reservations = [];
+
+
+  }
+};
+
+LibraryMan.deleteTitle = function (title) {
+  if (this.libBooks.hasOwnProperty(title))
+    delete this.libBooks.title;
+};
+
+
+
+Library.editTitle = function (title) {
+  if (this.libBooks.hasOwnProperty(title)) {
+    let option = prompt('\nTo change author enter 1' +
+   '\nTo change publisher enter 2' +
+   '\nTo change ISBN enter 3' +
+   '\nTo change location enter 4');
+   switch (option) {
+     case 1:
+       this.libBooks.title.author = prompt('Enter new author', 'author');
+       break;
+     case 2:
+       this.libBooks.title.publisher = prompt('Enter new publisher', 'publisher');
+       break;
+     case 3:
+       this.libBooks.title.ISBN = prompt('Enter new ISBN', 'ISBN');
+       break;
+     case 4:
+       this.libBooks.title.location = prompt('Enter new location', 'location');
+       break;
+     }
+  }
+};
