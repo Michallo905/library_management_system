@@ -33,6 +33,39 @@ class Library:
             print("Thanks for returning your borrowed book")
 
 
+class Student:
+    def requestBook(self):
+        print("Enter the name of the book you'd like to borrow>>")
+        self.book = input()
+        return self.book
+
+    def returnBook(self):
+        print("Enter the name of the book you'd like to return>>")
+        self.book = input()
+        return self.book
+
+
+class Librarian:
+    def searchBook(self):
+        print("Enter the name of the book you'd like to search>>")
+        self.book = input()
+        return self.book
+
+    def deleteBook(self):
+        print("Enter the name of the book you'd like to delete>>")
+        self.book = input()
+        return self.book
+
+    def returnBook(self):
+        print("Enter the name of the book you'd like to return>>")
+        self.book = input()
+        return self.book
+
+    def requestBook(self):
+        print("Enter the name of the book you'd like to borrow>>")
+        self.book = input()
+        return self.book
+
 
 def main():
       library=Library(["The Last Battle","The Screwtape letters","The Great Divorce"])
